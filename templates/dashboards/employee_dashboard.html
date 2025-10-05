@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Employee Dashboard{% endblock %}
+{% block content %}
+<h1>Employee Dashboard</h1>
+<div class="grid">
+  <div class="card"><h3>Payslips</h3><a class="btn" href="/payroll/my/payslips/">View</a></div>
+  <div class="card"><h3>Leave Requests</h3><a class="btn" href="/attendance/leaves/submit/">Submit</a></div>
+  <div class="card"><h3>Profile</h3><a class="btn" href="/accounts/profile/">Update</a></div>
+</div>
+{% endblock %}

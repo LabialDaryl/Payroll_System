@@ -1,0 +1,15 @@
+<header class="topbar">
+  <div class="brand">PMS</div>
+  <nav>
+    <ul>
+      {% if user.is_authenticated %}
+        <li><a href="/employee/">Employee</a></li>
+        <li><a href="/staff/">Staff/HR</a></li>
+        <li><a href="/admin/">Admin</a></li>
+        <li><a href="/accounts/logout/">Logout</a></li>
+      {% else %}
+        <li><a href="/accounts/login/">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>

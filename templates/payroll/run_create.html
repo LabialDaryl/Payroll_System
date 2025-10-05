@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}New Payroll Run{% endblock %}
+{% block content %}
+<h1>New Payroll Run</h1>
+<form method="post" class="card">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn" type="submit">Compute</button>
+  <a class="btn" href="/payroll/runs/">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Payslips for Run{% endblock %}
+{% block content %}
+<h1>Payslips</h1>
+<p>Period: {{ run.period_start }} to {{ run.period_end }}</p>
+<table class="card" style="width:100%">
+  <tr><th>Employee</th><th>Gross</th><th>SSS</th><th>PhilHealth</th><th>Pag-IBIG</th><th>Tax</th><th>Net</th></tr>
+  {% for s in slips %}
+  <tr>
+    <td>{{ s.employee }}</td>
+    <td>{{ s.gross_pay }}</td>
+    <td>{{ s.sss }}</td>
+    <td>{{ s.philhealth }}</td>
+    <td>{{ s.pagibig }}</td>
+    <td>{{ s.tax }}</td>
+    <td>{{ s.net_pay }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="7">No payslips</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

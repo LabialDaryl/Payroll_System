@@ -1,7 +1,12 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+<<<<<<< HEAD
 *.py[codz]
 *$py.class
+=======
+*.py[cod]
+$py.class
+>>>>>>> 72bb7fd (change)
 
 # C extensions
 *.so
@@ -19,6 +24,7 @@ lib64/
 parts/
 sdist/
 var/
+<<<<<<< HEAD
 wheels/
 share/python-wheels/
 *.egg-info/
@@ -31,13 +37,20 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+=======
+*.egg-info/
+*.egg
+>>>>>>> 72bb7fd (change)
 
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
+<<<<<<< HEAD
 htmlcov/
+=======
+>>>>>>> 72bb7fd (change)
 .tox/
 .nox/
 .coverage
@@ -46,6 +59,7 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *.cover
+<<<<<<< HEAD
 *.py.cover
 .hypothesis/
 .pytest_cache/
@@ -54,12 +68,27 @@ cover/
 # Translations
 *.mo
 *.pot
+=======
+hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+>>>>>>> 72bb7fd (change)
 
 # Django stuff:
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+<<<<<<< HEAD
+=======
+media
+staticfiles
+
+# If using Django collectstatic
+/static/
+>>>>>>> 72bb7fd (change)
 
 # Flask stuff:
 instance/
@@ -72,7 +101,10 @@ instance/
 docs/_build/
 
 # PyBuilder
+<<<<<<< HEAD
 .pybuilder/
+=======
+>>>>>>> 72bb7fd (change)
 target/
 
 # Jupyter Notebook
@@ -83,6 +115,7 @@ profile_default/
 ipython_config.py
 
 # pyenv
+<<<<<<< HEAD
 #   For a library or package, you might want to ignore these files since the code is
 #   intended to run in multiple environments; otherwise, check them in:
 # .python-version
@@ -130,13 +163,31 @@ __pypackages__/
 # Celery stuff
 celerybeat-schedule
 celerybeat.pid
+=======
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
+
+# Celery beat schedule file
+celerybeat-schedule
+>>>>>>> 72bb7fd (change)
 
 # SageMath parsed files
 *.sage.py
 
 # Environments
 .env
+<<<<<<< HEAD
 .envrc
+=======
+>>>>>>> 72bb7fd (change)
 .venv
 env/
 venv/
@@ -162,6 +213,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+<<<<<<< HEAD
 # pytype static type analyzer
 .pytype/
 
@@ -205,3 +257,67 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+# IDEs and editors
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-workspace
+
+# Visual Studio temporary files, build results, and
+# user-specific files
+*.obj
+*.pyc
+*.pdb
+*.idb
+*.class
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories for node/yarn/npm (if present)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Terraform
+.terraform/
+
+# Local env files
+.envrc
+.venvrc
+
+# End of .gitignore
+
+>>>>>>> 72bb7fd (change)
