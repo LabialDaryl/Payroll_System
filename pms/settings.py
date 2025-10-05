@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'attendance',
     'payroll',
     'reports',
+    'staff',
 ]
 
 MIDDLEWARE = [
@@ -31,6 +32,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'accounts.middleware.AuditLogMiddleware',
+    'accounts.middleware.RoleBasedAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'pms.urls'
@@ -46,6 +48,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.user_roles',
             ],
         },
     },
@@ -77,10 +80,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+
+import os
+if DEBUG:
+    import django
+    from django.conf import settings
+    from django.conf.urls.static import static
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 SESSION_COOKIE_SECURE = False if DEBUG else True

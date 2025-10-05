@@ -74,3 +74,15 @@ def salarygrade_update(request, pk):
     else:
         form = SalaryGradeForm(instance=obj)
     return render(request, 'employees/salarygrade_form.html', {'form': form, 'title': 'Update Salary Grade'})
+
+@login_required
+def my_salary_info(request):
+    """Employee view of their own salary information"""
+    try:
+        employee = request.user.employee
+        return render(request, 'employees/my_salary_info.html', {'employee': employee})
+    except Employee.DoesNotExist:
+        return render(request, 'employees/my_salary_info.html', {
+            'employee': None,
+            'error': 'No employee record found for your account. Please contact HR.'
+        })

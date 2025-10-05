@@ -22,7 +22,7 @@ def gsis_summary(request):
 @login_required
 @group_required('Staff')
 def export_csv(request, kind: str):
-    # Placeholder CSV export
+
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = f'attachment; filename="{kind}_report.csv"'
     writer = csv.writer(response)

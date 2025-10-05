@@ -25,9 +25,16 @@ def attendance_create(request):
     return render(request, 'attendance/attendance_form.html', {'form': form, 'title': 'Create Attendance Log'})
 
 @login_required
-@group_required('Employee')
 def leave_submit(request):
-    employee = get_object_or_404(Employee, user=request.user)
+    try:
+        employee = request.user.employee
+    except Employee.DoesNotExist:
+
+        return render(request, 'attendance/leave_form.html', {
+            'form': None, 
+            'title': 'Submit Leave Request',
+            'error': 'No employee record found for your account. Please contact HR.'
+        })
     if request.method == 'POST':
         form = LeaveRequestForm(request.POST)
         if form.is_valid():
@@ -55,3 +62,25 @@ def leave_decide(request, pk, decision):
         lr.decided_at = timezone.now()
         lr.save()
     return redirect('leave_queue')
+
+@login_required
+def my_leave_history(request):
+    """Employee view of their own leave requests"""
+    try:
+        employee = request.user.employee
+        leaves = LeaveRequest.objects.filter(employee=employee).order_by('-created_at')
+    except Employee.DoesNotExist:
+        leaves = []
+    
+    return render(request, 'attendance/my_leave_history.html', {'leaves': leaves})
+
+@login_required
+def my_attendance_records(request):
+    """Employee view of their own attendance records"""
+    try:
+        employee = request.user.employee
+        records = AttendanceLog.objects.filter(employee=employee).order_by('-date')[:30]  # Last 30 records
+    except Employee.DoesNotExist:
+        records = []
+    
+    return render(request, 'attendance/my_attendance_records.html', {'records': records})

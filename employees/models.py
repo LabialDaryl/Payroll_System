@@ -18,6 +18,11 @@ class Employee(models.Model):
     position = models.CharField(max_length=100)
     salary_grade = models.ForeignKey(SalaryGrade, on_delete=models.PROTECT)
     date_hired = models.DateField(null=True, blank=True)
+    
+
+    bank_name = models.CharField(max_length=100, blank=True)
+    bank_account = models.CharField(max_length=50, blank=True)
+    
     active = models.BooleanField(default=True)
 
     def __str__(self):

@@ -3,8 +3,11 @@ from django.shortcuts import render
 from accounts.decorators import group_required
 
 @login_required
-@group_required('Employee')
 def employee_dashboard(request):
+    """
+    Employee dashboard - accessible to all authenticated users as fallback.
+    Users with higher roles (Staff, Admin) can also access this.
+    """
     return render(request, 'dashboards/employee_dashboard.html')
 
 @login_required

@@ -1,11 +1,184 @@
 {% extends 'base.html' %}
-{% block title %}Staff/HR Dashboard{% endblock %}
+{% block title %}Staff Dashboard | PMS{% endblock %}
 {% block content %}
-<h1>Staff/HR Dashboard</h1>
-<div class="grid">
-  <div class="card"><h3>Employees</h3><a class="btn" href="/employees/">Manage</a></div>
-  <div class="card"><h3>Leaves</h3><a class="btn" href="/attendance/leaves/">Approve</a></div>
-  <div class="card"><h3>Payroll</h3><a class="btn" href="/payroll/runs/">Compute</a></div>
-  <div class="card"><h3>Reports</h3><a class="btn" href="/reports/">Generate</a></div>
+<div class="dashboard-header">
+  <h1>Welcome, {{ user.get_full_name|default:user.username }}!</h1>
+  <p class="role-badge staff-badge">Staff/HR Dashboard</p>
 </div>
+
+<div class="grid">
+  <!-- Employee Management Section -->
+  <div class="card">
+    <h3>👥 Employee Management</h3>
+    <p>Manage employee records and information</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/employees/">View All Employees</a>
+      <a class="btn btn-outline" href="/employees/create/">Add New Employee</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>💼 Employee Onboarding</h3>
+    <p>Manage new employee setup and documentation</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/staff/onboarding/">Onboarding Queue</a>
+      <a class="btn btn-outline" href="/employees/salary-grades/">Salary Grades</a>
+    </div>
+  </div>
+  
+  <!-- Leave & Attendance Management -->
+  <div class="card">
+    <h3>📋 Leave Management</h3>
+    <p>Review and approve employee leave requests</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/attendance/leaves/">Pending Approvals</a>
+      <a class="btn btn-outline" href="/staff/leave-calendar/">Leave Calendar</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>⏰ Attendance Management</h3>
+    <p>Monitor and manage employee attendance</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/attendance/">Daily Attendance</a>
+      <a class="btn btn-outline" href="/staff/attendance-summary/">Attendance Reports</a>
+    </div>
+  </div>
+  
+  <!-- Payroll Management -->
+  <div class="card">
+    <h3>💰 Payroll Processing</h3>
+    <p>Process and compute employee payroll</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/payroll/runs/">Payroll Runs</a>
+      <a class="btn btn-outline" href="/payroll/runs/create/">New Payroll</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>🏦 Bank & Deposits</h3>
+    <p>Manage salary deposits and bank transfers</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/staff/bank-transfers/">Bank Transfers</a>
+      <a class="btn btn-outline" href="/staff/deposit-status/">Deposit Status</a>
+    </div>
+  </div>
+  
+  <!-- Deductions & Benefits -->
+  <div class="card">
+    <h3>💳 Loans & Deductions</h3>
+    <p>Manage employee loans and deductions</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/payroll/loans/">Active Loans</a>
+      <a class="btn btn-outline" href="/payroll/deductions/">Other Deductions</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>🎯 Performance & Benefits</h3>
+    <p>Track employee performance and benefits</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/staff/performance/">Performance Reviews</a>
+      <a class="btn btn-outline" href="/staff/benefits/">Benefits Management</a>
+    </div>
+  </div>
+  
+  <!-- Reports & Analytics -->
+  <div class="card">
+    <h3>📊 HR Reports</h3>
+    <p>Generate comprehensive HR and payroll reports</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/reports/">Generate Reports</a>
+      <a class="btn btn-outline" href="/staff/analytics/">HR Analytics</a>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h3>⚙️ HR Administration</h3>
+    <p>System settings and HR administration</p>
+    <div class="card-actions">
+      <a class="btn btn-primary" href="/staff/settings/">HR Settings</a>
+      <a class="btn btn-outline" href="/staff/audit-logs/">Audit Logs</a>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+.dashboard-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.role-badge {
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+.staff-badge {
+  background: #28a745;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background: white;
+  transition: box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.card p {
+  color: #666;
+  margin-bottom: 15px;
+}
+.btn-primary {
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+.btn-primary:hover {
+  background: #218838;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #28a745;
+  border: 1px solid #28a745;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #28a745;
+  color: white;
+}
+</style>
 {% endblock %}
