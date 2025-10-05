@@ -10,4 +10,7 @@ urlpatterns = [
     path('salary-grades/', views.salarygrade_list, name='salarygrade_list'),
     path('salary-grades/create/', views.salarygrade_create, name='salarygrade_create'),
     path('salary-grades/<int:pk>/edit/', views.salarygrade_update, name='salarygrade_update'),
+    
+
+    path('my/salary-info/', views.my_salary_info, name='my_salary_info'),
 ]

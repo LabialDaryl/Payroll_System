@@ -1,12 +1,30 @@
 <header class="topbar">
-  <div class="brand">PMS</div>
+  <div class="brand">
+    <a href="/" style="color: inherit; text-decoration: none;">PMS</a>
+  </div>
   <nav>
     <ul>
       {% if user.is_authenticated %}
-        <li><a href="/employee/">Employee</a></li>
-        <li><a href="/staff/">Staff/HR</a></li>
-        <li><a href="/admin/">Admin</a></li>
-        <li><a href="/accounts/logout/">Logout</a></li>
+        <!-- Role-based navigation - users only see their appropriate dashboard -->
+        {% if user_is_superuser %}
+          <li><a href="/django-admin/">Django Admin</a></li>
+        {% elif user_is_admin %}
+          <li><a href="/admin/">Admin Dashboard</a></li>
+        {% elif user_is_staff %}
+          <li><a href="/staff/">Staff Dashboard</a></li>
+        {% else %}
+          <li><a href="/employee/">Employee Dashboard</a></li>
+        {% endif %}
+        
+        <!-- Common authenticated user links -->
+        <li>
+          <form method="post" action="/accounts/logout/" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="background: none; border: none; color: inherit; text-decoration: underline; cursor: pointer; font: inherit;">
+              Logout
+            </button>
+          </form>
+        </li>
       {% else %}
         <li><a href="/accounts/login/">Login</a></li>
       {% endif %}
